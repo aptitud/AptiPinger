@@ -1,7 +1,7 @@
 {
-  "name": "WeatherForecastPinger",
+  "name": "AptiPinger",
   "version": "1.0.0",
-  "description": "Pinging sea weather forecasts",
+  "description": "Pinging specified urls",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -10,7 +10,7 @@
   "engines": {
     "node": "0.10.32"
   },
-  "author": "Per Jansson",
+  "author": "Aptitud",
   "license": "BSD-2-Clause",
   "engine": "node >= 0.10.32",
   "dependencies": {

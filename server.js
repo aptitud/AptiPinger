@@ -20,7 +20,7 @@ for (var urlIndex = 0; urlIndex < pingUrls.length; urlIndex++) {
 function setupPingerFor(url)
 {
     try {
-        new cronJob('* * * * *', function () {
+        new cronJob('*/10 * * * *', function () {
             var jobExecutionTime = moment();
             request(url, function (error, response, scrapedForecasts) {
                 if (!error) {

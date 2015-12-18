@@ -1,0 +1,22 @@
+{
+  "name": "WeatherForecastPinger",
+  "version": "1.0.0",
+  "description": "Pinging sea weather forecasts",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "0.10.32"
+  },
+  "author": "Per Jansson",
+  "license": "BSD-2-Clause",
+  "engine": "node >= 0.10.32",
+  "dependencies": {
+    "cron": "~1.0.4",
+    "emailjs": "^0.3.11",
+    "moment": "^2.8.3",
+    "request": "^2.36.0"
+  }
+}

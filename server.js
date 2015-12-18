@@ -6,7 +6,7 @@ var http = require('http');
 var appPort = Number(process.env.PORT || 2013);
 
 const pingUrls = [
-  "http://aptigram.apphb.com/",
+  "http://aptigram.apphb.com/background",
   "http://aptitud.se/",
   "http://simpletweetmap.apphb.com/"
 ];

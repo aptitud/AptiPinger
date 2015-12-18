@@ -6,36 +6,36 @@ var http = require('http');
 var appPort = Number(process.env.PORT || 2013);
 
 const pingUrls = [
-    "http://aptigram.apphb.com/",
-    "http://aptitud.se/"
+  "http://aptigram.apphb.com/",
+  "http://aptitud.se/",
+  "http://simpletweetmap.apphb.com/"
 ];
 
 const TIME_FORMAT_PATTERN = "YYYY-MM-DD, HH:mm:ss:SSS Z";
 
 for (var urlIndex = 0; urlIndex < pingUrls.length; urlIndex++) {
-    var url = pingUrls[urlIndex];
-    setupPingerFor(url);
+  var url = pingUrls[urlIndex];
+  setupPingerFor(url);
 }
 
-function setupPingerFor(url)
-{
-    try {
-        new cronJob('*/10 * * * *', function () {
-            var jobExecutionTime = moment();
-            request(url, function (error, response, scrapedForecasts) {
-                if (!error) {
-                    log("Success pinging URL: " + url);
-                } else {
-                    var errorMessage = "Error pinging URL: " + url + " Error: " + error;
-                    log(errorMessage);
-                }
-            });
-        }, null, true);
-        log("Cron job started for URL: " + url);
-    } catch (ex) {
-        var errorMessage = "Cron pattern not valid: " + ex;
-        log(errorMessage);
-    }
+function setupPingerFor(url) {
+  try {
+    new cronJob('*/5 * * * *', function() {
+      var jobExecutionTime = moment();
+      request(url, function(error, response, scrapedForecasts) {
+        if (!error) {
+          log("Success pinging URL: " + url);
+        } else {
+          var errorMessage = "Error pinging URL: " + url + " Error: " + error;
+          log(errorMessage);
+        }
+      });
+    }, null, true);
+    log("Cron job started for URL: " + url);
+  } catch (ex) {
+    var errorMessage = "Cron pattern not valid: " + ex;
+    log(errorMessage);
+  }
 }
 
 function log(logMessage) {

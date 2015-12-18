@@ -2,7 +2,7 @@ var cronJob = require('cron').CronJob;
 var request = require('request');
 var moment = require('moment');
 var email = require('emailjs');
-var http = require("http");
+var http = require('http');
 var appPort = Number(process.env.PORT || 2013);
 
 const PING_URL = "http://aptigram.apphb.com/";

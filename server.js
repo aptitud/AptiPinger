@@ -7,8 +7,8 @@ var appPort = Number(process.env.PORT || 2013);
 
 const pingUrls = [
   "http://aptigram.apphb.com/background",
-  "http://aptitud.se/",
-  "http://simpletweetmap.apphb.com/"
+  "http://simpletweetmap.apphb.com/",
+  "http://aptibot.herokuapp.com/"
 ];
 
 const TIME_FORMAT_PATTERN = "YYYY-MM-DD, HH:mm:ss:SSS Z";

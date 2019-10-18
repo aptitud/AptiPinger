@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
-    "node": "0.10.32"
+    "npm": "6.x"
   },
   "author": "Aptitud",
   "license": "BSD-2-Clause",

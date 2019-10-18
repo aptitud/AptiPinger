@@ -1,9 +1,10 @@
-var cronJob = require('cron').CronJob;
-var request = require('request');
-var moment = require('moment');
-var email = require('emailjs');
-var http = require('http');
-var appPort = Number(process.env.PORT || 2013);
+const cronJob = require('cron').CronJob;
+const request = require('request');
+const moment = require('moment');
+const email = require('emailjs');
+const http = require('http');
+const appPort = Number(process.env.PORT || 2013);
+const cronSchedule = process.env.CRON ||  '*/5 * * * *';
 
 const pingUrls = [
   "http://aptigram.apphb.com/background",
@@ -14,26 +15,25 @@ const pingUrls = [
 const TIME_FORMAT_PATTERN = "YYYY-MM-DD, HH:mm:ss:SSS Z";
 
 for (var urlIndex = 0; urlIndex < pingUrls.length; urlIndex++) {
-  var url = pingUrls[urlIndex];
+  const url = pingUrls[urlIndex];
   setupPingerFor(url);
 }
 
 function setupPingerFor(url) {
   try {
-    new cronJob('*/5 * * * *', function() {
-      var jobExecutionTime = moment();
+    new cronJob(cronSchedule, function() {
       request(url, function(error, response, scrapedForecasts) {
         if (!error) {
           log("Success pinging URL: " + url);
         } else {
-          var errorMessage = "Error pinging URL: " + url + " Error: " + error;
+          const errorMessage = "Error pinging URL: " + url + " Error: " + error;
           log(errorMessage);
         }
       });
     }, null, true);
     log("Cron job started for URL: " + url);
   } catch (ex) {
-    var errorMessage = "Cron pattern not valid: " + ex;
+    const errorMessage = "Cron pattern not valid: " + ex;
     log(errorMessage);
   }
 }
@@ -46,7 +46,7 @@ function formatDate(moment) {
   return moment.format(TIME_FORMAT_PATTERN);
 }
 
-var server = http.createServer(function(request, response) {
+const server = http.createServer(function(request, response) {
   response.writeHead(200, {
     "Content-Type": "text/html"
   });
